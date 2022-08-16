@@ -1,0 +1,18 @@
+@using MessageClient.Models;
+@model List<MessageClient.Models.Message>;
+
+<h1>All Messages:</h1>
+
+<ol>
+@foreach (Message message in Model)
+{
+  <ul>
+    <li>ID: @message.MessageId</li>
+    <li>Body: @message.Body</li>
+    <li>Author: @message.Author</li>
+    <li>DatePosted: @message.DatePosted</li>
+  </ul>
+  <a href="/Messages/Details/@(message.MessageId)"><p>View Details</p></a>
+  <br>
+}
+</ol>
