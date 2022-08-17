@@ -1,0 +1,16 @@
+<h1>Message Info:</h1>
+<ul>
+  <li>ID: @Model.MessageId</li>
+  <li>Group: @ViewBag.Group.GroupName</li>
+  <li>Author: @Model.Author</li>
+  <li>Body: @Model.Body</li>
+  <li>DatePosted: @Model.DatePosted</li>
+</ul>
+<br>
+
+<a href="/Messages/Edit/@(Model.MessageId)"><p>Edit</p></a>
+<br>
+
+<a href="/Messages"><p>Return</p></a>
+
+<a href="/Messages/Delete/@(Model.MessageId)"><p>DELETE MESSAGE</p></a>

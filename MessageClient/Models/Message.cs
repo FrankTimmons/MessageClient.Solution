@@ -9,7 +9,6 @@ namespace MessageClient.Models
   {
     public int MessageId { get; set; }
     public int GroupId { get; set; }
-    public virtual Group Group { get; set; } = default!;
     public string Body { get; set; } = default!;
     public string Author { get; set; } = default!;
     public DateTime DatePosted { get; set; }
@@ -42,7 +41,7 @@ namespace MessageClient.Models
       var apiCallTask = ApiHelper.Post("messages", jsonMessage);
     }
 
-     public static void Put(Message message)
+    public static void Put(Message message)
     {
       string jsonMessage = JsonConvert.SerializeObject(message);
       var apiCallTask = ApiHelper.Put("messages", message.MessageId, jsonMessage);

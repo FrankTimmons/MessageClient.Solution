@@ -1,0 +1,24 @@
+@using MessageClient.Models;
+@model List<MessageClient.Models.Group>;
+
+<h1>Create Group:</h1>
+
+<form action="/Groups" method="post">
+  <label for="groupname">Group Name</label>
+  <input id="groupname" name="groupname" type="text">
+  <button type="submit">Go!</button>
+</form>
+
+<h1>All Groups:</h1>
+
+<ol>
+@foreach (Group group in Model)
+{
+  <ul>
+    <li>ID: @group.GroupId</li>
+    <li>Name: @group.GroupName</li>
+  </ul>
+  <a href="/Groups/Details/@(group.GroupId)"><p>View Details</p></a>
+  <br>
+}
+</ol>

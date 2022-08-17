@@ -1,5 +1,21 @@
 @using MessageClient.Models;
-@model List<MessageClient.Models.Message>;
+@{
+  var CurrentTime = ViewBag.CurrentTime;
+}
+
+<h1>New Message: </h1>
+
+<form action="/Messages" method="post">
+  <label for="author">Author</label>
+  <input id="author" name="author" type="text">
+  <label for="body">Body</label>
+  <input id="body" name="body" type="text">
+  <label for="dateposted">Date Posted</label>
+  <input id="dateposted" name="dateposted" type="datetime-local">
+  @Html.Label("Group")
+  @Html.DropDownList("GroupId") 
+  <button type="submit">Go!</button>
+</form>
 
 <h1>All Messages:</h1>
 
