@@ -26,6 +26,7 @@ namespace MessageClient.Models
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"{requestType}", Method.POST);
       request.AddHeader("Content-Type", "application/json");
+      request.AddHeader("Authorization", "Bearer " + AppUser.Token);
       request.AddJsonBody(newPost);
       var response = await client.ExecuteTaskAsync(request);
     }
@@ -35,6 +36,7 @@ namespace MessageClient.Models
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"{requestType}/{id}", Method.PUT);
       request.AddHeader("Content-Type", "application/json");
+      request.AddHeader("Authorization", "Bearer " + AppUser.Token);
       request.AddJsonBody(newPut);
       var response = await client.ExecuteTaskAsync(request);
     }
@@ -44,6 +46,7 @@ namespace MessageClient.Models
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"{requestType}/{id}", Method.DELETE);
       request.AddHeader("Content-Type", "application/json");
+      request.AddHeader("Authorization", "Bearer " + AppUser.Token);
       var response = await client.ExecuteTaskAsync(request);
     }
   }

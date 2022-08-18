@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MessageClient.Models;
+using Json.Net;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MessageClient.Controllers
 {
@@ -27,7 +30,9 @@ namespace MessageClient.Controllers
     public async Task<IActionResult> Index(AppUser user)
     {
       var response = await AppUser.Post(user);
-      return View("UserInfo", response);
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(response);
+      AppUser.Token = ((string)jsonResponse["token"]);      
+      return View("Index", "Home");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
