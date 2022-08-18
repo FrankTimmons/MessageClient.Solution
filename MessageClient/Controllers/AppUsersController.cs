@@ -24,10 +24,10 @@ namespace MessageClient.Controllers
     }
 
     [HttpPost]
-    public IActionResult Index(AppUser user)
+    public async Task<IActionResult> Index(AppUser user)
     {
-      AppUser.Post(user);
-      return View();
+      var response = await AppUser.Post(user);
+      return View("UserInfo", response);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

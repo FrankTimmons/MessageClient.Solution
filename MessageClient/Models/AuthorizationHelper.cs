@@ -1,9 +1,10 @@
+using System.Runtime.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RestSharp;
-
+using Json.Net;
 
 namespace MessageClient.Models
 {
@@ -17,13 +18,14 @@ namespace MessageClient.Models
       return response.Content;
     }
 
-    public static async Task Register(string newPost)
+    public static async Task<string> Register(string newPost)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"authmanagement/register", Method.POST);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(newPost);
       var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
     }
 
     public static async Task Login(string newPost)

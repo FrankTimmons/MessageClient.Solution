@@ -13,10 +13,11 @@ namespace MessageClient.Models
     public string Email { get; set; } = default!;
     public string Password { get; set; } = default!;
 
-    public static void Post(AppUser user)
+    public static Task<string> Post(AppUser user)
     {
       string jsonUser = JsonConvert.SerializeObject(user);
       var apiCallTask = AuthorizationHelper.Register(jsonUser);
+      return apiCallTask;
     }
   }
 }
